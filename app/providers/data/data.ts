@@ -11,11 +11,11 @@ import { Observable } from 'rxjs/Observable';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class DataService {
+export class Data {
 	
   public data: any;
 
-  constructor(public http: Http, public user: UserData) {}
+  constructor(public http: Http) {}
 
   load(){
   	if(this.data){

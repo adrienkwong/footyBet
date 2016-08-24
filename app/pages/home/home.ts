@@ -2,13 +2,17 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ModalController} from 'ionic-angular';
 import {HistoryPage} from '../history/history';
-import {PlayerModel} from '../../providers/player-model/player-model'
+import {PlayerModel} from '../../providers/player-model/player-model';
+import {Data} from '../../providers/data/data';
+
 
 
 @Component({
   templateUrl: 'build/pages/home/home.html'
 })
 export class HomePage {
+
+
   
   players = [
   	new PlayerModel("Adrien", 1,0,2,1),
@@ -20,7 +24,14 @@ export class HomePage {
 
   ];
 
-  constructor(private navCtrl: NavController, private modalController: ModalController) {
+  constructor(private navCtrl: NavController, private modalController: ModalController, public data:Data) {
+    data.data
+      .subscribe(
+        data => this.data = data,
+        console.error,
+        () => console.log('Done!')
+      );
+    
   	
   }
 

@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ModalController} from 'ionic-angular';
 import {HistoryPage} from '../history/history';
 import {PlayerModel} from '../../providers/player-model/player-model';
-import {Data} from '../../providers/data/data';
+
 
 
 
@@ -12,7 +12,20 @@ import {Data} from '../../providers/data/data';
 })
 export class HomePage {
 
+  errorMessage: string;
+  data: Data[];
+  mode = 'Observable'
 
+  constructor(private navCtrl: NavController, private modalController: ModalController) {}
+
+  ngOnInit() { this.getData(); }
+
+  getData(){
+    this.dataService.getData()
+                    .subscribe(
+                      data => this.data = data,
+                      error => this.errorMessage = <any>error);
+  };
   
   players = [
   	new PlayerModel("Adrien", 1,0,2,1),
@@ -24,16 +37,7 @@ export class HomePage {
 
   ];
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public data:Data) {
-    data.data
-      .subscribe(
-        data => this.data = data,
-        console.error,
-        () => console.log('Done!')
-      );
-    
-  	
-  }
+
 
 
 

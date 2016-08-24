@@ -2,13 +2,13 @@ import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {TabsPage} from './pages/tabs/tabs';
-import { HttpModule } from '@angular/http';
-import {Data} from '../../providers/data/data';
+
+
 
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [Data]
+  
 })
 export class MyApp {
 

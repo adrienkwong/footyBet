@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ModalController} from 'ionic-angular';
 import {HistoryPage} from '../history/history';
 import {PlayerModel} from '../../providers/player-model/player-model';
-import {Data} from '../../providers/data/data'
+import {DataService} from '../../providers/data/data'
 
 
 
@@ -15,7 +15,7 @@ export class HomePage {
 
   data: any;
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {
+  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: DataService) {
     this.data = dataService.load().then((data)=> {
       this.data = data
     });
@@ -24,7 +24,7 @@ export class HomePage {
   
 
   
-  };
+  
   
   players = [
   	new PlayerModel("Adrien", 1,0,2,1),
@@ -45,4 +45,4 @@ export class HomePage {
   	modal.present();
   }
 
-}
+};

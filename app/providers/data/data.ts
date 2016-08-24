@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { HomePage } from '../../app/pages/home/home';
+import { HomePage } from '../../pages/home/home';
 import { Observable } from 'rxjs/Observable';
 
 /*
@@ -19,7 +19,7 @@ export class DataService {
 
   load(){
   	if(this.data){
-  		return.Promise.resolve(this.data);
+  		return Promise.resolve(this.data);
   }
 
   	return new Promise(resolve => {

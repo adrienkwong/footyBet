@@ -1,0 +1,60 @@
+{
+	"matches": {
+
+		"f9238hf98h3298f": {
+			"title": "Arsenal v Liverpool",
+			"date": "2016-08-23T13:25:12+00:00",
+			"venue": "somewhere",
+			"homeTeam": "Arsenal",
+			"awayTeam": "Liverpool",
+			"betters": {
+				"adrien": {
+					"home": 3,
+					"away": 2
+				},
+				"john": {
+					"home": 0,
+					"away": 0
+				},
+				"dave": {
+					"home": 1,
+					"away": 2
+				}
+			}
+		},
+
+		"siohf98shfd98h329": {
+			"title": "Chelsea v Liverpool",
+			"date": "2016-08-23T13:25:12+00:00",
+			"venue": "somewhere",
+			"homeTeam": "Chelsea",
+			"awayTeam": "Liverpool",
+			"betters": {
+				"adrien": {
+					"home": 1,
+					"away": 1
+				},
+				"john": {
+					"home": 3,
+					"away": 0
+				}
+			}
+		}
+
+	},
+
+	"betters": {
+		"adrien": {
+			"name": "Adrien",
+			"points": 3
+		},
+		"john": {
+			"name": "John",
+			"points": 2
+		},
+		"dave": {
+			"name": "Dave",
+			"points": 1
+		}
+	}
+}

@@ -12,29 +12,23 @@ import { Observable } from 'rxjs/Observable';
 */
 @Injectable()
 export class DataService {
+	
+  public data: any;
 
-  constructor(private http: Http) {}
+  constructor(public http: Http, public user: UserData) {}
 
-  private dataUrl = './footybetdata.JSON'
-
-  getData (): Observable<Data[]> {
-  	return this.http.get(this.dataUrl)
-  			   .map(this.extractData)
-  .catch(this.handleError);
+  load(){
+  	if(this.data){
+  		return.Promise.resolve(this.data);
   }
-  	private extractData(res:Response){
-  		let body = res.json();
-  		return body.data || { };
-  	}
 
-  	private handleError (error: any) {
-
-  		let errMsg = (error.message)?
-  	error.message:
-  		error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg);
-    	return Observable.throw(errMsg);
-  	}
+  	return new Promise(resolve => {
+  		this.http.get('data/footybetdata.json').subscribe(res => {
+  			this.data = res.json();
+  			resolve(this.data);
+  		});
+  	});
+  }
 
 
   

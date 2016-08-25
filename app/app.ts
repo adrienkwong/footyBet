@@ -14,6 +14,8 @@ import {Data} from './providers/data/data';
 
 export class MyApp {
 
+  @ViewChild(Nav) nav: Nav;
+
   constructor(public platform: Platform, public dataService: Data) {
     
     this.rootPage = LoginPage;

@@ -32,4 +32,8 @@
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
     <preference name="xwalkMode" value="embedded" />
     <preference name="xwalkMultipleApk" value="true" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.2">
+        <variable name="APP_ID" value="1772951642984544" />
+        <variable name="APP_NAME" value="FootyBet" />
+    </plugin>
 </widget>

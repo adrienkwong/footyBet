@@ -12,6 +12,10 @@ import { Observable } from 'rxjs/Observable';
 */
 @Injectable()
 export class Data {
+
+  fbid: number;
+  username: string;
+  picture: string;
 	
   public data: any;
 

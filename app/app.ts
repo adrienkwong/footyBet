@@ -5,26 +5,34 @@ import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
 import {LoginPage} from './pages/login/login';
 import {TabsPage} from './pages/tabs/tabs';
-import {Data} from './providers/data/data'
-
-
-
+import {Data} from './providers/data/data';
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
   
 })
+
 export class MyApp {
 
-  private rootPage: any;
-
-  constructor(private platform: Platform) {
+  constructor(public platform: Platform, public dataService: Data) {
+    
     this.rootPage = LoginPage;
 
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      
       StatusBar.styleDefault();
+
+      logout():void {
+        this.nav.setRoot(LoginPage);
+
+        this.dataService.fbid = null;
+        this.dataService.username = null;
+        this.dataService.picture = null;
+
+        Facebook.logout();
+
+      };
+
     });
   }
 }

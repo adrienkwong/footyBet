@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Platform, NavController, AlertController } from 'ionic-angular';
+import { Facebook } from 'ionic-native';
+import { HomePage } from '../home/home';
+import { Data } from '../../providers/data/data'
 
-/*
-  Generated class for the LoginPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/login/login.html',
 })
 export class LoginPage {
 
-  constructor(private navCtrl: NavController) {
+  constructor(public nav: NavController, public platform: Platform, public dataService: Data, public alertCtrl: AlertController) {
+  	
 
+  }
+
+  login(): void {
+  	this.getProfile();
+  }
+
+  getProfile(): void {
+  	
+  	this.nav.setRoot(HomePage);
   }
 
 }

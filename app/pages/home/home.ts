@@ -14,10 +14,12 @@ import {Data} from '../../providers/data/data'
 export class HomePage {
 
   data: any;
+  test: any;
 
   constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {
     this.data = dataService.load().then((data)=> {
       this.data = data
+      this.test = data.betters.adrien.name
     });
   }
 

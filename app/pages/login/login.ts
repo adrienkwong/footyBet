@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, NavController, AlertController } from 'ionic-angular';
 import { Facebook } from 'ionic-native';
 import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 import { Data } from '../../providers/data/data'
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginPage {
 
   getProfile(): void {
   	
-  	this.nav.setRoot(HomePage);
+  	this.nav.setRoot(TabsPage);
   }
 
 }

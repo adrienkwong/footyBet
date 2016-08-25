@@ -14,9 +14,9 @@ import {Data} from './providers/data/data';
 
 export class MyApp {
 
-  @ViewChild(Nav) nav: Nav;
+  rootPage: any;
 
-  constructor(public platform: Platform, public dataService: Data) {
+  constructor(public platform: Platform, public dataService: Data, public nav: Nav) {
     
     this.rootPage = LoginPage;
 
@@ -24,7 +24,11 @@ export class MyApp {
       
       StatusBar.styleDefault();
 
-      logout():void {
+    });
+  }
+
+
+  logout(): void {
         this.nav.setRoot(LoginPage);
 
         this.dataService.fbid = null;
@@ -34,9 +38,6 @@ export class MyApp {
         Facebook.logout();
 
       };
-
-    });
-  }
 }
 
 ionicBootstrap(MyApp, [Data]);

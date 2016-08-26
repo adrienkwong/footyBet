@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { HomePage } from '../../pages/home/home';
 import { Observable } from 'rxjs/Observable';
@@ -9,81 +9,112 @@ import * as PouchDB from 'pouchdb';
 @Injectable()
 export class Data {
 
-  fbid: number;
-  username: string;
-  picture: string;
-  db: any;
   data: any;
-  cloudantUswername: string;
-  cloudantPassword: string;
-  remote: string;
-	
-  public data: any;
+  db: any;
+  remote: any;
 
-  constructor(public http: Http) {
+  constructor(private http: Http) {
+
+  }
+
+  init(details){
+
     this.db = new PouchDB('footybet');
-    this.cloudantUsername = 'rastiondertivoluddedshat';
-    this.cloudantPassword = 'dfa893f91188a8c010c356faa19027c05d8ea056';
-    this.remote = 'https://795673f8-86fb-41bf-b967-501e550db1d2-bluemix.cloudant.com/footybet/_all_docs?limit=100';
+    this.remote = details.userDBs.supertest;
 
-    //Set up PouchDB
     let options = {
       live: true,
       retry: true,
-      continuous: true,
-      auth: {
-        username: this.cloudantUsername,
-        password: this.cloudantPassword
-      }
+      continuous: true
     };
 
     this.db.sync(this.remote, options);
-
+    console.log(this.db);
   }
 
-  addDocument(message){
-    this.db.put(message);
+  logout(){
+
+    this.data = null;
+    this.db.destroy().then(() => {
+    console.log("database removed");
+    });
   }
 
-  getDocuments(){
+  getBettingData(){
+
+    if(this.data) {
+      return Promise.resolve(this.data);
+    }
 
     return new Promise(resolve => {
-
       this.db.allDocs({
-
-        include_docs: true,
-        limit: 30,
-        descending: true
-
+        include_docs: true
       }).then((result) => {
-
-      this.data = [];
-
-      let docs = result.rows.map((row) => {
-        this.data.push(row.doc);
-      });
-
-      this.data.reverse();
-      resolve(this.data);
-
-      this.db.changes({live:true, since: 'now', include_docs: true}).on('change',(change) => {
-      this.handleChange(change);
-      });
-
-      }).catch((error)=> {
-
-        console.log(error);
+        this.data = [];
+        let docs = result.rows.map((row) => {
+          this.data.push(row.doc);
+        });
+        resolve(this.data);
+        this.db.changes({live: true, since: 'now', include_docs:true}).on('change',(change) => {
+          this.handleChange(change);
+        });
+      }).catch((error)=> {console.log(error);
       });
     });
   }
 
-  handleChange(change){
-
+  createBet(bet){
+    this.db.post(bet);
+  }
+ 
+  updateBet(bet){
+    this.db.put(bet).catch((err) => {
+      console.log(err);
+    });
+  }
+ 
+  deleteBet(bet){
+    this.db.remove(bet).catch((err) => {
+      console.log(err);
+    });
   }
 
-
-
-  load(){
+  handleChange(change){
+ 
+    let changedDoc = null;
+    let changedIndex = null;
+ 
+    this.data.forEach((doc, index) => {
+ 
+      if(doc._id === change.id){
+        changedDoc = doc;
+        changedIndex = index;
+      }
+ 
+    });
+ 
+    //A document was deleted
+    if(change.deleted){
+      this.data.splice(changedIndex, 1);
+    } 
+    else {
+ 
+      //A document was updated
+      if(changedDoc){
+        this.data[changedIndex] = change.doc;
+      } 
+ 
+      //A document was added
+      else {
+        this.data.push(change.doc); 
+      }
+ 
+    }
+ 
+  }
+  
+  //Just for Practicing
+  /*load(){
   	if(this.data){
   		return Promise.resolve(this.data);
   }
@@ -94,7 +125,7 @@ export class Data {
   			resolve(this.data);
   		});
   	});
-  }
+  }*/
 
 
   

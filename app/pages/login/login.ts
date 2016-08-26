@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Platform, NavController, AlertController, LoadingController } from 'ionic-angular';
-import { Facebook } from 'ionic-native';
+import { Http, Headers } from '@angular/http';
+import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
+import { SignupPage } from '../signup/signup';
 import { Data } from '../../providers/data/data'
 
 @Component({
@@ -10,68 +11,36 @@ import { Data } from '../../providers/data/data'
 })
 export class LoginPage {
 
-  loading: any;
-
-  constructor(public nav: NavController, public platform: Platform, public dataService: Data, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-  	
-    this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
-    });
-
-  }
-
-  login(): void {
-
-    this.loading.present();
-
-    Facebook.login(['public_profile']).then((response) => {
-
-      this.getProfile();
-
-    }, (err) => {
-
-      let alert = this.alertCtrl.create({
-        title: 'Oops!',
-        subTitle: 'Something went wrong, please try again later.',
-        buttons: ['Ok']
-      });
-
-      this.loading.dismiss();
-      alert.present();
-    });
-  	
-  }
-
-  getProfile(): void {
-
-    Facebook.api('/me?fields=id,name,picture', ['public_profile']).then (
-
-      (response) => {
-
-          console.log(response);
-
-          this.dataService.fbid = response.id;
-          this.dataService.username = response.name;
-          this.dataService.picture = response.picture.data.url;
-
-        	this.loading.dismiss();
-        	this.nav.setRoot(TabsPage);
-        },
-
-        (err) => {
-
-          console.log(err);
-
-          let alert = this.alertCtrl.create({
-            title: 'Oops!',
-            subTitle: 'Something went wrong, please try again later.',
-            buttons: ['Ok']
-          });
-
-          this.loading.dismiss();
-          alert.present();
-        }
-      );
+    username: string;
+    password: string;
+ 
+    constructor(private nav: NavController, private http: Http, private todoService: Todos) {
+ 
     }
+ 
+    login(){
+ 
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+ 
+        let credentials = {
+            username: this.username,
+            password: this.password
+        };
+ 
+        this.http.post('http://localhost:3000/auth/login', JSON.stringify(credentials), {headers: headers})
+          .subscribe(res => {
+            this.todoService.init(res.json());
+            this.nav.setRoot(HomePage);
+          }, (err) => {
+            console.log(err);
+          });
+ 
+    }
+ 
+    launchSignup(){
+        this.nav.push(SignupPage);
+    }
+ 
 
 }

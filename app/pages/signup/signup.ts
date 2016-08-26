@@ -1,19 +1,45 @@
 import { Component } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import { NavController } from 'ionic-angular';
-
-/*
-  Generated class for the SignupPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+import { HomePage } from '../home/home';
+import { Todos } from '../../providers/todos/todos';
+ 
 @Component({
   templateUrl: 'build/pages/signup/signup.html',
 })
 export class SignupPage {
-
-  constructor(private navCtrl: NavController) {
-
-  }
-
+ 
+    name: string;
+    username: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+ 
+    constructor(private nav: NavController, private http: Http, private todoService: Todos) {
+ 
+    }
+ 
+    register(){
+ 
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+ 
+        let user = {
+            name: this.name,
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            confirmPassword: this.confirmPassword
+        };
+ 
+        this.http.post('http://localhost:3000/auth/register', JSON.stringify(user), {headers: headers})
+          .subscribe(res => {
+            this.todoService.init(res.json());
+            this.nav.setRoot(HomePage);
+          }, (err) => {
+            console.log(err);
+          });   
+ 
+    }
+ 
 }

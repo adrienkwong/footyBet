@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Facebook} from 'ionic-native';
 import {Nav, Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HomePage} from './pages/home/home';
@@ -14,13 +13,11 @@ import {Data} from './providers/data/data';
 
 export class MyApp {
 
-  @ViewChild(Nav) nav: Nav;
-  rootPage: any;
 
-  constructor(public platform: Platform, public dataService: Data) {
+  rootPage: any = LoginPage;
+
+  constructor(public platform: Platform) {
     
-    this.rootPage = LoginPage;
-
     platform.ready().then(() => {
       
       StatusBar.styleDefault();
@@ -29,16 +26,6 @@ export class MyApp {
   }
 
 
-  logout(): void {
-        this.nav.setRoot(LoginPage);
-
-        this.dataService.fbid = null;
-        this.dataService.username = null;
-        this.dataService.picture = null;
-
-        Facebook.logout();
-
-      };
 }
 
 ionicBootstrap(MyApp, [Data]);

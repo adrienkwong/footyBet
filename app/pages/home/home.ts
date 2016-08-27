@@ -15,21 +15,16 @@ export class HomePage {
 
   BettingData: any;
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {
+  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {}
 
-    ionViewLoaded(){
+  ionViewLoaded(){
       this.dataService.getBettingData().then((data) => {
           this.BettingData = data;
       });
-    };
-
-  }
-
+    }
   
 
-  
-  
-  
+
   /*players = [
   	new PlayerModel("Adrien", 1,0,2,1),
   	new PlayerModel("Nick", 1,0,2,1),
@@ -39,8 +34,6 @@ export class HomePage {
   	new PlayerModel("Harry", 0,0,2,0)
 
   ];*/
-
-
 
 
 

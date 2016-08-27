@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { Todos } from '../../providers/todos/todos';
+import { Data } from '../../providers/data/data';
  
 @Component({
   templateUrl: 'build/pages/signup/signup.html',
@@ -15,7 +15,7 @@ export class SignupPage {
     password: string;
     confirmPassword: string;
  
-    constructor(private nav: NavController, private http: Http, private todoService: Todos) {
+    constructor(private nav: NavController, private http: Http, private Service: Data) {
  
     }
  
@@ -32,9 +32,9 @@ export class SignupPage {
             confirmPassword: this.confirmPassword
         };
  
-        this.http.post('http://localhost:3000/auth/register', JSON.stringify(user), {headers: headers})
+        this.http.post('https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet/_all_docs/auth/register', JSON.stringify(user), {headers: headers})
           .subscribe(res => {
-            this.todoService.init(res.json());
+            this.Service.init(res.json());
             this.nav.setRoot(HomePage);
           }, (err) => {
             console.log(err);

@@ -14,7 +14,7 @@ export class LoginPage {
     username: string;
     password: string;
  
-    constructor(private nav: NavController, private http: Http, private todoService: Todos) {
+    constructor(private nav: NavController, private http: Http, private Service: Data) {
  
     }
  
@@ -30,7 +30,7 @@ export class LoginPage {
  
         this.http.post('http://localhost:3000/auth/login', JSON.stringify(credentials), {headers: headers})
           .subscribe(res => {
-            this.todoService.init(res.json());
+            this.Service.init(res.json());
             this.nav.setRoot(HomePage);
           }, (err) => {
             console.log(err);

@@ -22,9 +22,9 @@ app.use(function(req, res, next) {
 var config = {
   dbServer: {
     protocol: 'http://',
-    host: 'localhost:5984',
-    user: '',
-    password: '',
+    host: 'https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet/_all_docs',
+    user: 'lampardkwong@gmai.com',
+    password: 'billy711',
     userDB: 'sl-users',
     couchAuthDB: '_users'
   },

@@ -32,7 +32,7 @@ export class SignupPage {
             confirmPassword: this.confirmPassword
         };
  
-        this.http.post('https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet/auth/register', JSON.stringify(user), {headers: headers})
+        this.http.post('http://localhost:3000/auth/register', JSON.stringify(user), {headers: headers})
           .subscribe(res => {
             this.Service.init(res.json());
             this.nav.setRoot(HomePage);

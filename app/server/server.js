@@ -21,8 +21,8 @@ app.use(function(req, res, next) {
  
 var config = {
   dbServer: {
-    protocol: 'http://', /* https:// */
-    host: 'https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet',
+    protocol: 'https://',
+    host: 'https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet/_all_docs',
     user: 'ingstinkstedyingsitherro',
     password: 'f577f806707fbdd66d96c33065161aa955a6fac7',
     cloudant: true,

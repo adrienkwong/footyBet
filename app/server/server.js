@@ -21,10 +21,11 @@ app.use(function(req, res, next) {
  
 var config = {
   dbServer: {
-    protocol: 'http://',
-    host: 'https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet/_all_docs',
-    user: 'lampardkwong@gmai.com',
-    password: 'billy711',
+    protocol: 'http://', /* https:// */
+    host: 'https://79fd7df4-85f7-42f4-bce6-a57b9c11d6fb-bluemix.cloudant.com/footybet',
+    user: 'ingstinkstedyingsitherro',
+    password: 'f577f806707fbdd66d96c33065161aa955a6fac7',
+    cloudant: true,
     userDB: 'sl-users',
     couchAuthDB: '_users'
   },
@@ -45,9 +46,14 @@ var config = {
     loginOnRegistration: true,
   },
   userDBs: {
+    // These databases will be set up automatically for each new user
     defaultDBs: {
-      private: ['supertest']
-    }
+      // Private databases are personal to each user. They will be prefixed with your setting below and postfixed with $USERNAME.
+      private: ['user'],
+      // Shared databases that you want the user to be authorized to use. These will not be prefixed, so type the exact name.
+      shared: ['betting']
+    },
+
   },
   providers: { 
     local: true

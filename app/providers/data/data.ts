@@ -21,7 +21,7 @@ export class Data {
   init(details){
 
     this.db = new PouchDB('footybet');
-    this.remote = details.userDBs.supertest;
+    this.remote = details.userDBs.footybet;
 
     let options = {
       live: true,

@@ -10,8 +10,6 @@
 </ion-header>
 
 <ion-content>
-  <p>{{test}}</p>
-  <p>{{data}}</p>
 
   <h1 align="center">AUGUST</h1>
   <table style="width:90%" align="center">
@@ -31,26 +29,6 @@
   </tr>
 </table>
 
-  <p>REAL</p>
-  <p>REAL</p>
-
-  <h1 align="center">REAL</h1>
-  <table style="width:90%" align="center">
-  <tr>
-    <th>Name</th>
-    <th>HAD</th> 
-    <th>CRS</th>
-    <th>T</th>
-    <th>PTS</th>
-  </tr>
-  <tr *ngFor="let player of players" >
-    <td><a (click)="presentModal()">{{player.name}}</a></td>
-    <td>{{player.HAD}}</td> 
-    <td>{{player.CRS}}</td>
-    <td>{{player.T}}</td>
-    <td>{{player.PTS}}</td>
-  </tr>
-</table>
 </ion-content>
 
 

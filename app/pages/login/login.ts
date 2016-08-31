@@ -30,6 +30,7 @@ export class LoginPage {
  
         this.http.post('http://localhost:3000/auth/login', JSON.stringify(credentials), {headers: headers})
           .subscribe(res => {
+            
             this.Service.init(res.json());
             this.nav.setRoot(HomePage);
           }, (err) => {

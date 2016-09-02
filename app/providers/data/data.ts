@@ -9,7 +9,7 @@ import * as PouchDB from 'pouchdb';
 @Injectable()
 export class Data {
 
-  data: any;
+  public data: any;
   db: any;
   remote: any;
 

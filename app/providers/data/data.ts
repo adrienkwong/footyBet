@@ -29,8 +29,19 @@ export class Data {
       continuous: true
     };
 
-    this.db.sync(this.remote, options);
-    console.log(this.db);
+    this.db.sync(this.remote, options).on('complete', () => {
+      console.log("synced");
+
+      this.getBettingData().then((data) => {
+        console.log(data);
+      });
+
+    }).on('error', (err) => {
+      console.log(err);
+    }).on('change', (change) => {
+      console.log(change);
+    });
+
   }
 
   logout(){

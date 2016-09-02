@@ -53,7 +53,21 @@ var config = {
       // Shared databases that you want the user to be authorized to use. These will not be prefixed, so type the exact name.
       shared: ['betting']
     },
-
+    model: {
+     // If your database is not listed below, these default settings will be applied
+      _default: {
+        // these permissions only work with the Cloudant API
+        permissions: ['_reader', '_replicator'],
+      },
+      betting: {
+        permissions: ['_reader', '_writer', '_replicator'],
+        // 'private' or 'shared'
+        type: 'private',
+        // Roles that will be automatically added to the db's _security object of this specific db
+        adminRoles: [],
+        memberRoles: []
+      }
+    },
   },
   providers: { 
     local: true

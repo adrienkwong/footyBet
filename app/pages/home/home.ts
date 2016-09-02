@@ -21,9 +21,12 @@ export class HomePage {
       this.dataService.getBettingData().then((data) => {
           console.log("ionViewLoaded activated");
           this.BettingData = data;
-          console.log(this.bettingData);
       });
-    }
+    };
+
+  showMeTheData(){
+     console.log(this.BettingData);
+ };
   
 
 

@@ -19,7 +19,9 @@ export class HomePage {
 
   ionViewLoaded(){
       this.dataService.getBettingData().then((data) => {
+          console.log("ionViewLoaded activated");
           this.BettingData = data;
+          console.log(this.bettingData);
       });
     }
   

@@ -62,7 +62,7 @@ var config = {
       betting: {
         permissions: ['_reader', '_writer', '_replicator'],
         // 'private' or 'shared'
-        type: 'private',
+        type: 'shared',
         // Roles that will be automatically added to the db's _security object of this specific db
         adminRoles: [],
         memberRoles: []

@@ -12,22 +12,24 @@
 <ion-content>
 
   <h1 align="center">MONTH HERE</h1>
-  <table style="width:90%" align="center">
-  <tr>
-    <th>Name</th>
-    <th>HAD</th> 
-    <th>CRS</th>
-    <th>T</th>
-    <th>PTS</th>
-  </tr>
-  <tr *ngFor="let better of dataService.data" >
-    <td><a (click)="presentModal()">{{better.name}}</a></td>
-    <td>{{better.HAD}}</td> 
-    <td>{{better.CRS}}</td>
-    <td>7</td>
-    <td>FORMULA HERE</td>
-  </tr>
-  </table>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>Name</ion-col>
+    <ion-col>HAD</ion-col> 
+    <ion-col>CRS</ion-col>
+    <ion-col>T</ion-col>
+    <ion-col>PTS</ion-col>
+  </ion-row>
+  <ion-row *ngFor="let better of dataService.data" >
+    <ion-row><a (click)="presentModal()">{{better.name}}</a></ion-row>
+    <ion-row>{{better.HAD}}</ion-row> 
+    <ion-row>{{better.CRS}}</ion-row>
+    <ion-row>7</ion-row>
+    <ion-row>FORMULA HERE</ion-row>
+  </ion-row>
+</ion-grid>
+
 
 </ion-content>
 

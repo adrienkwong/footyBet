@@ -15,7 +15,7 @@ export class SignupPage {
     password: string;
     confirmPassword: string;
  
-    constructor(private nav: NavController, private http: Http, private Service: Data) {
+    constructor(public nav: NavController, private http: Http, private Service: Data) {
  
     }
  

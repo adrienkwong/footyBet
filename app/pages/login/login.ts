@@ -32,7 +32,7 @@ export class LoginPage {
           .subscribe(res => {
             
             this.Service.init(res.json());
-            this.nav.setRoot(HomePage);
+            this.nav.setRoot(TabsPage);
           }, (err) => {
             console.log(err);
           });

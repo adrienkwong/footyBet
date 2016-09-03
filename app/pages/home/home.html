@@ -11,9 +11,7 @@
 
 <ion-content>
 
-  <p>{{dataService.data}}</p>
-
-  <h1 align="center">AUGUST2</h1>
+  <h1 align="center">MONTH HERE</h1>
   <table style="width:90%" align="center">
   <tr>
     <th>Name</th>
@@ -22,12 +20,12 @@
     <th>T</th>
     <th>PTS</th>
   </tr>
-  <tr *ngFor="let player of players" >
-    <td><a (click)="presentModal()">{{player.name}}</a></td>
-    <td>{{player.HAD}}</td> 
-    <td>{{player.CRS}}</td>
-    <td>{{player.T}}</td>
-    <td>{{player.PTS}}</td>
+  <tr *ngFor="let better of dataService.data" >
+    <td><a (click)="presentModal()">{{better.name}}</a></td>
+    <td>{{better.HAD}}</td> 
+    <td>{{better.CRS}}</td>
+    <td>7</td>
+    <td>FORMULA HERE</td>
   </tr>
   </table>
 

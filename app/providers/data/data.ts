@@ -29,18 +29,7 @@ export class Data {
       continuous: true
     };
 
-    this.db.sync(this.remote, options).on('complete', () => {
-      console.log("synced");
-
-      this.getBettingData().then((data) => {
-        console.log(data);
-      });
-
-    }).on('error', (err) => {
-      console.log(err);
-    }).on('change', (change) => {
-      console.log(change);
-    });
+    this.db.sync(this.remote, options);
 
   }
 
@@ -48,11 +37,13 @@ export class Data {
 
     this.data = null;
     this.db.destroy().then(() => {
-    console.log("database removed");
+      console.log("database removed");
     });
   }
 
   getBettingData(){
+
+    console.log("getting betting data");
 
     if(this.data) {
       return Promise.resolve(this.data);

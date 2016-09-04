@@ -13,6 +13,10 @@ export class Data {
   db: any;
   remote: any;
 
+  public matchData: any;
+  matchDb: any;
+  matchDbRemote: any;
+
 
   constructor(private http: Http) {
 
@@ -23,6 +27,9 @@ export class Data {
     this.db = new PouchDB('footybet');
     this.remote = details.userDBs.betting;
 
+    this.matchDb = new PouchDB('matches');
+    this.matchDbRemote = details.userDBs.matches;
+
     let options = {
       live: true,
       retry: true,
@@ -30,6 +37,7 @@ export class Data {
     };
 
     this.db.sync(this.remote, options);
+    this.matchDb.sync(this.matchDbRemote, options);
 
   }
 
@@ -65,6 +73,33 @@ export class Data {
       });
     });
   }
+
+  getMatchesData(){
+
+    console.log("getting matches data");
+
+    if(this.matchData) {
+      return Promise.resolve(this.matchData);
+    }
+
+    return new Promise(resolve => {
+      this.matchDb.allDocs({
+        include_docs: true
+      }).then((result) => {
+        this.matchData = [];
+        let docs = result.rows.map((row) => {
+          this.matchData.push(row.doc);
+        });
+        resolve(this.matchData);
+        this.matchDb.changes({live: true, since: 'now', include_docs:true}).on('change',(change) => {
+          this.matchHandleChange(change);
+        });
+      }).catch((error)=> {console.log(error);
+      });
+    });
+  }
+
+
 
   createBet(bet){
     this.db.post(bet);
@@ -110,6 +145,40 @@ export class Data {
       //A document was added
       else {
         this.data.push(change.doc); 
+      }
+ 
+    }
+ 
+  }
+
+  matchHandleChange(change){
+ 
+    let changedDoc = null;
+    let changedIndex = null;
+ 
+    this.matchData.forEach((doc, index) => {
+ 
+      if(doc._id === change.id){
+        changedDoc = doc;
+        changedIndex = index;
+      }
+ 
+    });
+ 
+    //A document was deleted
+    if(change.deleted){
+      this.matchData.splice(changedIndex, 1);
+    } 
+    else {
+ 
+      //A document was updated
+      if(changedDoc){
+        this.matchData[changedIndex] = change.doc;
+      } 
+ 
+      //A document was added
+      else {
+        this.matchData.push(change.doc); 
       }
  
     }

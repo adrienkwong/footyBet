@@ -22,7 +22,7 @@
 
 	<ion-card>
 	  <ion-card-header>
-	    HOME TEAM vs AWAY TEAM
+	    testing:
 	  </ion-card-header>
 	  <ion-card-content>
 	    <p>Result: 2:1</p>
@@ -30,34 +30,14 @@
 	  </ion-card-content>
 	</ion-card>
 
-    <ion-card>
-    <ion-card-header>
-      HOME TEAM vs AWAY TEAM
-    </ion-card-header>
-    <ion-card-content>
-      <p>Result: 2:1</p>
-      <p>[Player]'s BET: 1:1</p>
-    </ion-card-content>
-  </ion-card>
-
-    <ion-card>
-    <ion-card-header>
-      HOME TEAM vs AWAY TEAM
-    </ion-card-header>
-    <ion-card-content>
-      <p>Result: 2:1</p>
-      <p>[Player]'s BET: 1:1</p>
-    </ion-card-content>
-  </ion-card>
-
-    <ion-card>
-    <ion-card-header>
-      HOME TEAM vs AWAY TEAM
-    </ion-card-header>
-    <ion-card-content>
-      <p>Result: 2:1</p>
-      <p>[Player]'s BET: 1:1</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-col>
+    <ion-row *ngFor="let match of dataService.data.matches" >
+      <ion-row>{{match.HT}}</ion-row>
+      <ion-row>FORMULA HERE</ion-row> 
+      <ion-row>FORMULA HERE</ion-row>
+      <ion-row>FORMULA HERE</ion-row>
+      <ion-row>FORMULA HERE</ion-row>
+    </ion-row>
+  </ion-col>
 
 </ion-content>

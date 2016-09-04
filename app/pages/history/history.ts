@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
+import {Data} from '../../providers/data/data'
 
-/*
-  Generated class for the HistoryPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/history/history.html',
 })
 export class HistoryPage {
 
-  constructor(private navCtrl: NavController, public viewCtrl: ViewController) {
-
+  constructor(private navCtrl: NavController, public viewCtrl: ViewController, public dataService: Data) {
   }
+
+  
+
 
   dismiss() {
     this.viewCtrl.dismiss();

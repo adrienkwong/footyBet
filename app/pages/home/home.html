@@ -22,7 +22,7 @@
     <ion-col>PTS</ion-col>
   </ion-row>
   <ion-row *ngFor="let better of dataService.data" >
-    <ion-row><a (click)="presentModal()">{{better.name}}</a></ion-row>
+    <ion-row><a (click)="presentModal(better)">{{better.name}}</a></ion-row>
     <ion-row>FORMULA HERE</ion-row> 
     <ion-row>FORMULA HERE</ion-row>
     <ion-row>FORMULA HERE</ion-row>

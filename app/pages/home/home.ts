@@ -18,9 +18,14 @@ export class HomePage {
       });
   }
 
-  presentModal() {
-  	let modal = this.modalController.create(HistoryPage);
+  presentModal(better) {
+
+  	let modal = this.modalController.create(HistoryPage, {
+      better: better
+    });
+
   	modal.present();
+    
   }
 
 };

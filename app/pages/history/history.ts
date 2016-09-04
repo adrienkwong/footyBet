@@ -8,6 +8,10 @@ import {Data} from '../../providers/data/data'
 export class HistoryPage {
 
   constructor(private navCtrl: NavController, public viewCtrl: ViewController, public dataService: Data) {
+
+	  this.dataService.getMatchesData().then((data) => {
+	        console.log("MATCHES DATA: ", data);
+	      });
   }
 
   

@@ -20,24 +20,15 @@
 
 <ion-content padding>
 
-	<ion-card>
-	  <ion-card-header>
-	    testing:
+	<ion-card *ngFor="let match of dataService.matchData" >
+	  <ion-card-header align="center">
+	    {{match.HT}} VS {{match.AT}}
 	  </ion-card-header>
-	  <ion-card-content>
-	    <p>Result: 2:1</p>
-      <p>[Player]'s BET: 1:1</p>
+	  <ion-card-content align="center">
+	    <p>Date: {{match.data | date:'medium'}}</p>
+      <p>Actual Result: {{match.HS}} : {{match.AS}}</p>
+      <p>[Player] Bet: </p>
 	  </ion-card-content>
 	</ion-card>
-
-  <ion-col>
-    <ion-row *ngFor="let match of dataService.data.matches" >
-      <ion-row>{{match.HT}}</ion-row>
-      <ion-row>FORMULA HERE</ion-row> 
-      <ion-row>FORMULA HERE</ion-row>
-      <ion-row>FORMULA HERE</ion-row>
-      <ion-row>FORMULA HERE</ion-row>
-    </ion-row>
-  </ion-col>
 
 </ion-content>

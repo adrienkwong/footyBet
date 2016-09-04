@@ -51,9 +51,8 @@ var config = {
       // Private databases are personal to each user. They will be prefixed with your setting below and postfixed with $USERNAME.
       private: ['user'],
       // Shared databases that you want the user to be authorized to use. These will not be prefixed, so type the exact name.
-      shared: ['betting'],
-      shared: ['matches']
-    },
+      shared: ['betting','matches']
+          },
     model: {
      // If your database is not listed below, these default settings will be applied
       _default: {

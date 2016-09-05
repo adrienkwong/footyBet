@@ -10,12 +10,42 @@ import {Data} from '../../providers/data/data'
 })
 export class HomePage {
 
+  public matches: any;
+  public betting: any;
+
   constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {}
 
   ionViewLoaded(){
       this.dataService.getBettingData().then((data) => {
         console.log("ORIGINAL DATA: ", data);
+        this.returnBettingData(data);
       });
+
+
+      this.dataService.getMatchesData().then((data) => {
+          console.log("MATCHES DATA: ", data);
+            this.returnMatchData(data);
+          
+        });
+  }
+
+  returnMatchData(matches){
+
+  console.log("I'm get this in homepage:", matches);
+  this.matches = matches;
+  console.log(matches);
+  }
+
+  returnBettingData(betting){
+
+  console.log("I'm get this in homepage:", betting);
+  this.betting = betting;
+  console.log(betting);
+  }
+
+  createRows(){
+
+    
   }
 
   presentModal(better) {
@@ -27,5 +57,7 @@ export class HomePage {
   	modal.present();
     
   }
+
+
 
 };

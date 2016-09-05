@@ -64,6 +64,11 @@ export class HistoryPage {
 
 
   }
+
+  getCards(){
+
+  	return(this.cards);
+  }
   
 
   dismiss() {

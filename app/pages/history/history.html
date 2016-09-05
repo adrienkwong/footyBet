@@ -20,14 +20,14 @@
 
 <ion-content padding>
 
-	<ion-card *ngFor="let match of dataService.matchData" >
+	<ion-card *ngFor="let card of cards" >
 	  <ion-card-header align="center">
-	    {{match.HT}} VS {{match.AT}}
+	    {{card.HT}} VS {{card.AT}}
 	  </ion-card-header>
 	  <ion-card-content align="center">
-	    <p>Date: {{match.date | date:'medium'}}</p>
-      <p>Actual Result: {{match.HS}} : {{match.AS}}</p>
-      <p>{{better.name}}&#39;s Bet: </p>
+	    <p>Date: {{card.date | date:'medium'}}</p>
+      <p>Actual Result: {{card.HS}} : {{card.AS}}</p>
+      <p>{{better.name}}&#39;s Bet: {{card.BHS}} : {{card.BAS}}</p>
 	  </ion-card-content>
 	</ion-card>
 

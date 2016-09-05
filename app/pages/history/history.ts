@@ -13,25 +13,23 @@ export class HistoryPage {
 
   constructor(private navCtrl: NavController, public viewCtrl: ViewController, public dataService: Data, private navParams: NavParams) {
 
-
-  	console.log(this.navParams.get('better'));
-
     this.better = this.navParams.get('better');
 
-    console.log("2nd", this.better.name);
+    console.log("This better is", this.better.name);
 
-
-
-
+    var matches = '';
 
 	  this.dataService.getMatchesData().then((data) => {
 	        console.log("MATCHES DATA: ", data);
+          matches = data;
+          
 	      });
+
+    
 
   }
 
   
-
 
   dismiss() {
     this.viewCtrl.dismiss();

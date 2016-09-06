@@ -12,7 +12,7 @@
 <ion-content>
 
   <h1 align="center">MONTH HERE</h1>
-  <button (click)="createRows()">CREATE ROWS</button>
+  <button (click)="createRows()">REFRESH</button>
 
 <ion-grid>
   <ion-row>
@@ -26,7 +26,7 @@
     <ion-row><a (click)="presentModal(row)">{{row.name}}</a></ion-row>
     <ion-row>{{row.HAD}}</ion-row> 
     <ion-row>{{row.CRS}}</ion-row>
-    <ion-row>FORMULA HERE</ion-row>
+    <ion-row>{{noOfMatches}}</ion-row>
     <ion-row>{{row.PTS}}</ion-row>
   </ion-row>
 </ion-grid>

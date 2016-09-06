@@ -14,6 +14,7 @@ export class HomePage {
   public betting: any;
   public rows: any;
   public stupidMatches: any;
+  public noOfMatches = 0;
 
   constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {
 
@@ -24,15 +25,13 @@ export class HomePage {
       this.dataService.getBettingData().then((data) => {
         //console.log("ORIGINAL DATA: ", data);
         this.returnBettingData(data);
-      });
-
-
-      this.dataService.getMatchesData().then((data) => {
+        this.dataService.getMatchesData().then((data) => {
           //console.log("MATCHES DATA: ", data);
             this.returnMatchData(data);
-          
+            this.createRows();
+            this.countMatches()
         });
-
+      });
   }
 
   returnMatchData(matches){
@@ -54,6 +53,7 @@ export class HomePage {
   }
 
   createRows(){
+
     //each row should be an object, consists of that better's name, history + actual score of each match, HAD, CRS, PTS
 
     //console.log(this.rows, "in createRows")
@@ -154,7 +154,17 @@ export class HomePage {
   }
 
 
+  countMatches(){
 
+    this.noOfMatches = 1;
+    console.log(this.stupidMatches, "Here is SM");
+
+    for (var i in this.stupidMatches){      
+      if(this.stupidMatches[i].HS != ""){
+        this.noOfMatches += 1
+      }
+    }
+  }
   
 
   presentModal(better) {

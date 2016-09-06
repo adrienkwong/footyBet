@@ -51,7 +51,7 @@ export class Data {
 
   getBettingData(){
 
-    console.log("getting betting data");
+    //console.log("getting betting data");
 
     if(this.data) {
       return Promise.resolve(this.data);
@@ -76,7 +76,7 @@ export class Data {
 
   getMatchesData(){
 
-    console.log("getting matches data");
+    //console.log("getting matches data");
 
     if(this.matchData) {
       return Promise.resolve(this.matchData);

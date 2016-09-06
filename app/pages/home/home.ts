@@ -15,50 +15,56 @@ export class HomePage {
   public rows: any;
   public stupidMatches: any;
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {}
+  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {
+
+
+  }
 
   ionViewLoaded(){
       this.dataService.getBettingData().then((data) => {
-        console.log("ORIGINAL DATA: ", data);
+        //console.log("ORIGINAL DATA: ", data);
         this.returnBettingData(data);
       });
 
 
       this.dataService.getMatchesData().then((data) => {
-          console.log("MATCHES DATA: ", data);
+          //console.log("MATCHES DATA: ", data);
             this.returnMatchData(data);
           
         });
+
   }
 
   returnMatchData(matches){
 
-    console.log("I'm get this in homepage:", matches);
+    //console.log("I'm get this in homepage:", matches);
     this.matches = matches;
-    console.log(matches);
+    //console.log(matches);
     this.stupidMatches = this.matches;
   }
 
   returnBettingData(betting){
 
-    console.log("I'm get this in homepage:", betting);
+    //console.log("I'm get this in homepage:", betting);
     this.betting = betting;
-    console.log(this.betting);
+    //console.log(this.betting);
     this.rows = this.betting
+
 
   }
 
   createRows(){
     //each row should be an object, consists of that better's name, history + actual score of each match, HAD, CRS, PTS
 
-    console.log(this.rows, "in createRows")
+    //console.log(this.rows, "in createRows")
 
 
     //adding actual scores into each better/row
     for (var better in this.rows){
 
       this.rows[better].HAD = 0;
-      this.rows[better].CRS = 0
+      this.rows[better].CRS = 0;
+      this.rows[better].PTS = 0;
 
       if(this.rows[better].history.match1){
 
@@ -137,13 +143,17 @@ export class HomePage {
 
       }
 
-    console.log("HAD:",this.rows[better].HAD);
-    console.log("CRS:",this.rows[better].CRS)
+    //console.log("HAD:",this.rows[better].HAD);
+    //console.log("CRS:",this.rows[better].CRS)
+    this.rows[better].PTS = this.rows[better].HAD + this.rows[better].CRS
+
     }
 
     console.log(this.rows, "in createRows AFTER adding")
 
   }
+
+
 
   
 

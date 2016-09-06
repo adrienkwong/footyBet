@@ -22,12 +22,12 @@
     <ion-col>T</ion-col>
     <ion-col>PTS</ion-col>
   </ion-row>
-  <ion-row *ngFor="let better of dataService.data" >
-    <ion-row><a (click)="presentModal(better)">{{better.name}}</a></ion-row>
-    <ion-row>FORMULA HERE</ion-row> 
+  <ion-row *ngFor="let row of rows" >
+    <ion-row><a (click)="presentModal(row)">{{row.name}}</a></ion-row>
+    <ion-row>{{row.HAD}}</ion-row> 
+    <ion-row>{{row.CRS}}</ion-row>
     <ion-row>FORMULA HERE</ion-row>
-    <ion-row>FORMULA HERE</ion-row>
-    <ion-row>FORMULA HERE</ion-row>
+    <ion-row>{{row.PTS}}</ion-row>
   </ion-row>
 </ion-grid>
 

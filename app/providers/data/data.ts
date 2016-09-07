@@ -8,6 +8,8 @@ import * as PouchDB from 'pouchdb';
 
 @Injectable()
 export class Data {
+  
+  public details: any;
 
   public data: any;
   db: any;
@@ -23,6 +25,9 @@ export class Data {
   }
 
   init(details){
+
+    console.log(details);
+    this.details = details;
 
     this.db = new PouchDB('footybet');
     this.remote = details.userDBs.betting;

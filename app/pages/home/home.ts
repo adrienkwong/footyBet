@@ -156,11 +156,11 @@ export class HomePage {
 
   countMatches(){
 
-    this.noOfMatches = 1;
+    this.noOfMatches = 0;
     console.log(this.stupidMatches, "Here is SM");
 
     for (var i in this.stupidMatches){      
-      if(this.stupidMatches[i].HS != ""){
+      if(this.stupidMatches[i].HS != 99){
         this.noOfMatches += 1
       }
     }

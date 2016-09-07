@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {ViewChild} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, LoadingController} from 'ionic-angular';
 import {ModalController} from 'ionic-angular';
 import {HistoryPage} from '../history/history';
 import {PlayerModel} from '../../providers/player-model/player-model';
@@ -12,7 +11,6 @@ import {LoadingModal} from '../loading-modal/loading-modal';
 })
 export class HomePage {
   
-  @ViewChild(LoadingModal) childcmp: LoadingModal;
 
   public matches: any;
   public betting: any;
@@ -21,15 +19,13 @@ export class HomePage {
   public noOfMatches = 0;
   public monthRows: any;
   public setMonth = 8;
+  loading: any;
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {
+  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data, private loadingCtrl: LoadingController) {
 
 
   }
 
-  closeModal(){
-    this.childcmp.dismiss();
-  }
 
   ionViewLoaded(){
       
@@ -41,7 +37,7 @@ export class HomePage {
           //console.log("MATCHES DATA: ", data);
             this.returnMatchData(data);
             this.createRows();
-            this.closeModal();
+
 
             
         });

@@ -6,8 +6,9 @@ import {LoginPage} from './pages/login/login';
 import {TabsPage} from './pages/tabs/tabs';
 import {Data} from './providers/data/data';
 
+
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  template: '<ion-nav [root]="rootPage"></ion-nav>'
   
 })
 

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NavController } from 'ionic-angular';
+import {ModalController} from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
-import { Data } from '../../providers/data/data'
+import { Data } from '../../providers/data/data';
+import {LoadingModal} from '../loading-modal/loading-modal';
 
 @Component({
   templateUrl: 'build/pages/login/login.html',
@@ -14,12 +16,14 @@ export class LoginPage {
     username: string;
     password: string;
  
-    constructor(private nav: NavController, private http: Http, private Service: Data) {
+    constructor(private nav: NavController, private http: Http, private Service: Data, private modalController: ModalController) {
  
     }
  
     login(){
- 
+        
+        this.presentModal();
+
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
  
@@ -41,6 +45,15 @@ export class LoginPage {
  
     launchSignup(){
         this.nav.push(SignupPage);
+    }
+
+    presentModal() {
+
+    let modal = this.modalController.create(LoadingModal);
+    modal.present();
+
+
+    
     }
  
 

@@ -11,7 +11,26 @@
 
 <ion-content>
 
-  <h1 align="center">MONTH HERE</h1>
+  <!--<ion-input type="text" [(ngModel)]="setMonth">Month</ion-input>
+  <button (click)="whatissetMonth()">setMonth</button>-->
+  <ion-segment [(ngModel)]="setMonth" primary>
+    <ion-segment-button value=8 (ionSelect)="changesetMonth(8)">
+      Aug
+    </ion-segment-button>
+    <ion-segment-button value=9 (ionSelect)="changesetMonth(9)">
+      Sep
+    </ion-segment-button>
+    <ion-segment-button value=10 (ionSelect)="changesetMonth(10)">
+      Oct
+    </ion-segment-button>
+    <ion-segment-button value=11 (ionSelect)="changesetMonth(11)">
+      Nov
+    </ion-segment-button>
+    <ion-segment-button value=12 (ionSelect)="changesetMonth(12)">
+      Dec
+    </ion-segment-button>
+  </ion-segment>
+
   <button (click)="createRows()">REFRESH</button>
 
 <ion-grid>

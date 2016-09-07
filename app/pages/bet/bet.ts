@@ -40,11 +40,13 @@ export class BetPage {
 
 
   submit(){
-  	console.log(this.user_id)
-  	console.log(this.HomeScore)
-  	console.log(this.AwayScore)
-  	console.log(this.currentMatch)
-  	console.log(this.dataService.db)
+  	//console.log(this.user_id)
+  	//console.log(this.HomeScore)
+  	//console.log(this.AwayScore)
+  	//console.log(this.currentMatch)
+    //console.log(this.currentMatch._id)
+  	//console.log(this.dataService.db)
+    this.dataService.createBet(this.user_id, this.currentMatch._id, this.HomeScore, this.AwayScore)
 
 
   }

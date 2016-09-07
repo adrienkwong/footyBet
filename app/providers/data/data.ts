@@ -106,8 +106,20 @@ export class Data {
 
 
 
-  createBet(bet){
-    this.db.post(bet);
+  createBet(user_id, match_id, HS, AS){
+      console.log(user_id);
+      console.log(match_id);
+      console.log(HS);
+      console.log(AS);
+
+    //this.db.get(user_id)
+    //.then((doc) => {
+      //doc.history.match5.HS = HS;
+      //doc.history.match5.AS = AS;
+      //this.db.put(doc);
+      //}).catch((err) => {
+        //console.log(err)
+      //});
   }
  
   updateBet(bet){

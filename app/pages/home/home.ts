@@ -143,9 +143,9 @@ export class HomePage {
         }
 
         else if(
-        ((this.rows[better].history[bet].month == this.setMonth) && (this.rows[better].history[bet].HS > this.rows[better].history[bet].AS) && (this.rows[better].history[bet].ActualHS > this.rows[better].history[bet].ActualAS)) ||
-        ((this.rows[better].history[bet].month == this.setMonth) && (this.rows[better].history[bet].HS < this.rows[better].history[bet].AS) && (this.rows[better].history[bet].ActualHS < this.rows[better].history[bet].ActualAS)) ||
-        ((this.rows[better].history[bet].month == this.setMonth) && (this.rows[better].history[bet].HS == this.rows[better].history[bet].AS) && (this.rows[better].history[bet].ActualHS == this.rows[better].history[bet].ActualAS))
+        ((this.rows[better].history[bet].month == this.setMonth) && (this.rows[better].history[bet].HS > this.rows[better].history[bet].AS) && (this.rows[better].history[bet].ActualHS > this.rows[better].history[bet].ActualAS) && (this.rows[better].history[bet].ActualHS != "N/A") && (this.rows[better].history[bet].HS != "DID NOT BET")) ||
+        ((this.rows[better].history[bet].month == this.setMonth) && (this.rows[better].history[bet].HS < this.rows[better].history[bet].AS) && (this.rows[better].history[bet].ActualHS < this.rows[better].history[bet].ActualAS) &&(this.rows[better].history[bet].ActualHS != "N/A") && (this.rows[better].history[bet].HS != "DID NOT BET")) ||
+        ((this.rows[better].history[bet].month == this.setMonth) && (this.rows[better].history[bet].HS == this.rows[better].history[bet].AS) && (this.rows[better].history[bet].ActualHS == this.rows[better].history[bet].ActualAS) && (this.rows[better].history[bet].ActualHS != "N/A") && (this.rows[better].history[bet].HS != "DID NOT BET"))
         ){
           this.rows[better].HAD += 1;
           //console.log("HAD Correct!")
@@ -177,7 +177,7 @@ export class HomePage {
 
     for (var i in this.stupidMatches){      
       var month = new Date(this.stupidMatches[i].date).getMonth() + 1;
-      if((this.stupidMatches[i].HS != 99) && (month == this.setMonth)){
+      if((this.stupidMatches[i].HS != "N/A") && (month == this.setMonth)){
         this.noOfMatches += 1
       }
     }

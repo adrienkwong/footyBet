@@ -37,7 +37,7 @@ export class BetPage {
 		console.log("MATCHES DATA: ", data);
 		var stopCounting = 0;
 		for (var i in data){
-			if((data[i].HS == "99") && (stopCounting==0)){
+			if((data[i].HS == "N/A") && (stopCounting==0)){
 				this.currentMatch = data[i]
 				this.HomeTeam = data[i].HT
 				this.AwayTeam = data[i].AT

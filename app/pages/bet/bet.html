@@ -24,4 +24,11 @@
 <button fab-center (click)="submit()">Submit your bet!</button>
 </div>
 
+<ion-grid>
+  <ion-row *ngFor="let bet of allBets" text-center>
+    <ion-col text-center>{{bet.name}}</ion-col> 
+    <ion-col text-center>{{bet.history[currentMatch._id]["HS"]}} : {{bet.history[currentMatch._id]["AS"]}}</ion-col>
+  </ion-row>
+</ion-grid>
+
 </ion-content>

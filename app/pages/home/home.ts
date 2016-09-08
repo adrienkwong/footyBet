@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {NavController, LoadingController} from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import {ModalController} from 'ionic-angular';
 import {HistoryPage} from '../history/history';
 import {PlayerModel} from '../../providers/player-model/player-model';
 import {Data} from '../../providers/data/data';
-import {LoadingModal} from '../loading-modal/loading-modal';
+
 
 @Component({
   templateUrl: 'build/pages/home/home.html',
@@ -19,12 +19,8 @@ export class HomePage {
   public noOfMatches = 0;
   public monthRows: any;
   public setMonth = 8;
-  loading: any;
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data, private loadingCtrl: LoadingController) {
-
-
-  }
+  constructor(private navCtrl: NavController, private modalController: ModalController, public dataService: Data) {}
 
 
   ionViewLoaded(){
@@ -37,9 +33,6 @@ export class HomePage {
           //console.log("MATCHES DATA: ", data);
             this.returnMatchData(data);
             this.createRows();
-
-
-            
         });
       });
   }

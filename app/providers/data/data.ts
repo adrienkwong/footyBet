@@ -26,7 +26,7 @@ export class Data {
 
   init(details){
 
-    console.log(details);
+    //console.log(details);
     this.details = details;
 
     this.db = new PouchDB('footybet');
@@ -106,20 +106,24 @@ export class Data {
 
 
 
-  createBet(user_id, match_id, HS, AS){
-      console.log(user_id);
-      console.log(match_id);
-      console.log(HS);
-      console.log(AS);
+  createBet(doc_id, match_id, HS, AS){
+      //console.log(doc_id);
+      //console.log(match_id);
+      //console.log(HS);
+      //console.log(AS);
 
-    //this.db.get(user_id)
-    //.then((doc) => {
-      //doc.history.match5.HS = HS;
-      //doc.history.match5.AS = AS;
-      //this.db.put(doc);
-      //}).catch((err) => {
-        //console.log(err)
-      //});
+    this.db.get(doc_id)
+    .then((doc) => 
+      {console.log("BEFORE", doc)
+      doc.history[match_id] = {};
+      doc.history[match_id].HS = Number(HS);
+      doc.history[match_id].AS = Number(AS);
+      this.db.put(doc);
+      console.log("AFTER", doc)
+      })
+    .catch((err) => {
+        console.log(err)
+      });
   }
  
   updateBet(bet){

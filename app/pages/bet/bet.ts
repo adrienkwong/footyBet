@@ -12,6 +12,7 @@ export class BetPage {
   public HomeScore: any;
   public AwayScore: any;
   public user_id: any;
+  public doc_id: any;
   public currentMatch: any;
   public HomeTeam: any;
   public AwayTeam: any;
@@ -20,6 +21,17 @@ export class BetPage {
 
   constructor(private navCtrl: NavController, public dataService: Data) {
   	this.user_id = dataService.details.user_id;
+  	console.log(dataService.details)
+
+  	//convert user_id to doc_id
+  	this.dataService.getBettingData().then((data) => {
+  		for (var better of data){
+  			if(better.user_id == this.user_id){
+  				this.doc_id = better._id
+  				console.log(this.doc_id)
+  			}
+  		}
+  	})
 
   	this.dataService.getMatchesData().then((data) => {
 		console.log("MATCHES DATA: ", data);
@@ -31,22 +43,20 @@ export class BetPage {
 				this.AwayTeam = data[i].AT
 				this.Date = data[i].date
 				stopCounting = 1
+				}
 			}
-		}
-		
-        
-    });
+		});
   }
 
 
   submit(){
-  	//console.log(this.user_id)
+  	//console.log(this._id)
   	//console.log(this.HomeScore)
   	//console.log(this.AwayScore)
   	//console.log(this.currentMatch)
     //console.log(this.currentMatch._id)
   	//console.log(this.dataService.db)
-    this.dataService.createBet(this.user_id, this.currentMatch._id, this.HomeScore, this.AwayScore)
+    this.dataService.createBet(this.doc_id, this.currentMatch._id, this.HomeScore, this.AwayScore)
 
 
   }

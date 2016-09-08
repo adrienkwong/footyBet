@@ -19,9 +19,7 @@ export class LoginPage {
  
     constructor(private nav: NavController, private http: Http, private Service: Data, private modalController: ModalController, private loadingCtrl: LoadingController) {
         this.loading = this.loadingCtrl.create({
-        content: 'Loading...',
-        duration: 6000,
-        dismissOnPageChange: true
+        content: 'Loading...'
         });
     }
 
@@ -44,6 +42,7 @@ export class LoginPage {
             
             this.Service.init(res.json());
             this.nav.setRoot(TabsPage);
+            this.loading.dismiss()
           }, (err) => {
             console.log(err);
           });

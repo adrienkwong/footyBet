@@ -37,7 +37,7 @@ export class LoginPage {
             password: this.password
         };
  
-        this.http.post('http://localhost:3000/auth/login', JSON.stringify(credentials), {headers: headers})
+        this.http.post('https://evening-woodland-89480.herokuapp.com/auth/login', JSON.stringify(credentials), {headers: headers})
           .subscribe(res => {
             
             this.Service.init(res.json());

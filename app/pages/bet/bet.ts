@@ -41,7 +41,6 @@ export class BetPage {
 		for (var i in data){
 			if((data[i].HS == "N/A") && (stopCounting==0)){
 				this.currentMatch = data[i]
-
 				this.HomeTeam = data[i].HT
 				this.AwayTeam = data[i].AT
 				this.Date = data[i].date

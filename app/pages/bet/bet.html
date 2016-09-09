@@ -13,6 +13,7 @@
 <h1 align=center>VS</h1>
 <h1 align=center>{{AwayTeam}}</h1>
 
+
   <ion-item>
     <ion-label>主場入球</ion-label>
     <ion-select [(ngModel)]="HomeScore">
@@ -49,6 +50,7 @@
 <button block danger (click)="submit()">落注！</button>
 <p align=center style="color:red"><ion-icon name="hand" style="color:black"></ion-icon>切勿向外圍莊家或海外莊家下注</p>
 </div>
+
 
 <ion-grid>
   <ion-row *ngFor="let bet of allBets" text-center>

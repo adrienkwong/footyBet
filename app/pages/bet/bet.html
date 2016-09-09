@@ -1,33 +1,59 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Next Match
+      下場賽事
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="about">
-<h1 align=center>Time left: COUNTDOWN HERE</h1>
-<h2 align=center>{{Date | date:'d, MMM' }}</h2>
-<h4 align=center>{{Date | date:'jm'}}</h4>
-<h1 align=center padding=100px>{{HomeTeam}} vs {{AwayTeam}}</h1>
+<h2 align=center>{{Date | date:'yMd' }}</h2>
+<p align=center>{{Date | date:'jm'}}</p>
+<h1 align=center>{{HomeTeam}}</h1>
+<h1 align=center>VS</h1>
+<h1 align=center>{{AwayTeam}}</h1>
 
   <ion-item>
-    <ion-input type="text" placeholder="HOME SCORE" [(ngModel)]="HomeScore"></ion-input>
+    <ion-label>主場入球</ion-label>
+    <ion-select [(ngModel)]="HomeScore">
+      <ion-option value=0>0</ion-option>
+      <ion-option value=1>1</ion-option>
+      <ion-option value=2>2</ion-option>
+      <ion-option value=3>3</ion-option>
+      <ion-option value=4>4</ion-option>
+      <ion-option value=5>5</ion-option>
+      <ion-option value=6>6</ion-option>
+      <ion-option value=7>7</ion-option>
+      <ion-option value=8>8</ion-option>
+      <ion-option value=9>9</ion-option>
+    </ion-select>
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" size="4" placeholder="AWAY SCORE" [(ngModel)]="AwayScore"></ion-input>
+    <ion-label>作客入球</ion-label>
+    <ion-select [(ngModel)]="AwayScore">
+      <ion-option value=0>0</ion-option>
+      <ion-option value=1>1</ion-option>
+      <ion-option value=2>2</ion-option>
+      <ion-option value=3>3</ion-option>
+      <ion-option value=4>4</ion-option>
+      <ion-option value=5>5</ion-option>
+      <ion-option value=6>6</ion-option>
+      <ion-option value=7>7</ion-option>
+      <ion-option value=8>8</ion-option>
+      <ion-option value=9>9</ion-option>
+    </ion-select>
   </ion-item>
 
 <div padding=100px margin=100px>
-<button fab-center (click)="submit()">Submit your bet!</button>
+<button block danger (click)="submit()">落注！</button>
+<p align=center style="color:red"><ion-icon name="hand" style="color:black"></ion-icon>切勿向外圍莊家或海外莊家下注</p>
 </div>
 
 <ion-grid>
   <ion-row *ngFor="let bet of allBets" text-center>
     <ion-col text-center>{{bet.name}}</ion-col> 
-    <ion-col text-center>{{bet.history[currentMatch._id]["HS"]}} : {{bet.history[currentMatch._id]["AS"]}}</ion-col>
+    <ion-col text-center style="color:blue">{{bet.history[currentMatch._id]["HS"]}} : {{bet.history[currentMatch._id]["AS"]}}</ion-col>
   </ion-row>
 </ion-grid>
 

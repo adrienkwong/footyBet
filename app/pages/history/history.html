@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>History</ion-title>
+    <ion-title>投注記錄</ion-title>
     <ion-buttons end>
       <button (click)="dismiss()">
         <ion-icon name="md-close"></ion-icon>
@@ -25,9 +25,9 @@
 	    {{card.HT}} VS {{card.AT}}
 	  </ion-card-header>
 	  <ion-card-content align="center">
-	    <p>Date: {{card.date | date:'medium'}}</p>
-      <p>Actual Result: {{card.HS}} : {{card.AS}}</p>
-      <p>{{better.name}}&#39;s Bet: {{card.BHS}} : {{card.BAS}}</p>
+	    <p>{{card.date | date:'shortDate'}}</p>
+      實際比數： <p style="color:orange">{{card.HS}} : {{card.AS}}</p>
+      {{better.name}}的投注： <p style="color:blue">{{card.BHS}} : {{card.BAS}}</p>
 	  </ion-card-content>
 	</ion-card>
 

@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Socring Table</ion-title>
-    <ion-button end>
+    <ion-title>積分榜</ion-title>
+    <!--<ion-button end>
       <button (click)="logout()">
         <ion-icon name = "power"></ion-icon>
       </button>
-    </ion-button>
+    </ion-button>-->
   </ion-navbar>
 </ion-header>
 
@@ -15,38 +15,38 @@
   <button (click)="whatissetMonth()">setMonth</button>-->
   <ion-segment [(ngModel)]="setMonth" primary>
     <ion-segment-button value=8 (ionSelect)="changesetMonth(8)">
-      Aug
+      八月
     </ion-segment-button>
     <ion-segment-button value=9 (ionSelect)="changesetMonth(9)">
-      Sep
+      九月
     </ion-segment-button>
     <ion-segment-button value=10 (ionSelect)="changesetMonth(10)">
-      Oct
+      十月
     </ion-segment-button>
     <ion-segment-button value=11 (ionSelect)="changesetMonth(11)">
-      Nov
+      十一月
     </ion-segment-button>
     <ion-segment-button value=12 (ionSelect)="changesetMonth(12)">
-      Dec
+      十二月
     </ion-segment-button>
   </ion-segment>
 
 
 
 <ion-grid class="container">
-  <ion-row>
-    <ion-col text-center>Name</ion-col>
-    <ion-col text-center>HAD</ion-col> 
-    <ion-col text-center>CRS</ion-col>
-    <ion-col text-center>T</ion-col>
-    <ion-col text-center>PTS</ion-col>
+  <ion-row style="border-bottom:1px solid black">
+    <ion-col width-33></ion-col>
+    <ion-col width-15 text-center style="font-weight: bold">主客和</ion-col> 
+    <ion-col width-15 text-center style="font-weight: bold">波膽</ion-col>
+    <ion-col width-15 text-center style="font-weight: bold">總場數</ion-col>
+    <ion-col width-15 text-center style="font-weight: bold">積分</ion-col>
   </ion-row>
-  <ion-row *ngFor="let row of rows" text-center>
-    <ion-col text-center><a (click)="presentModal(row)">{{row.name}}</a></ion-col>
-    <ion-col text-center>{{row.HAD}}</ion-col> 
-    <ion-col text-center>{{row.CRS}}</ion-col>
-    <ion-col text-center>{{noOfMatches}}</ion-col>
-    <ion-col text-center>{{row.PTS}}</ion-col>
+  <ion-row *ngFor="let row of rows" text-center style="border-bottom:1px solid lightgrey">
+    <ion-col text-center width-33><a (click)="presentModal(row)">{{row.name}}</a></ion-col>
+    <ion-col text-center width-15 >{{row.HAD}}</ion-col> 
+    <ion-col text-center width-15 >{{row.CRS}}</ion-col>
+    <ion-col text-center width-15 >{{noOfMatches}}</ion-col>
+    <ion-col text-center width-15 style="color: orange">{{row.PTS}}</ion-col>
   </ion-row>
 </ion-grid>
 

@@ -33,7 +33,7 @@ export class SignupPage {
             confirmPassword: this.confirmPassword
         };
  
-        this.http.post('http://localhost:3000/auth/register', JSON.stringify(user), {headers: headers})
+        this.http.post('https://evening-woodland-89480.herokuapp.com/auth/register', JSON.stringify(user), {headers: headers})
           .subscribe(res => {
             this.Service.init(res.json());
             this.nav.setRoot(TabsPage);

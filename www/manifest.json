@@ -1,0 +1,13 @@
+{
+  "name": "Footybet",
+  "short_name": "Footybet",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "images/premier-league.jpg",
+    "sizes": "512x512",
+    "type": "image/jpg"
+  }],
+  "background_color": "#FF9800",
+  "theme_color": "#FF9800"
+}
